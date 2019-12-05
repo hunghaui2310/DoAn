@@ -1,0 +1,48 @@
+.col-sm{
+  height: 40px;
+  width: 100%;
+}
+#header-bot{
+  height: 90px;
+}
+.header-bot {
+  height: 30px;
+  line-height: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom:5px;
+  clear: both;
+}
+.header-bot img{
+  max-height: 100%;
+}
+#header-bot-search{
+  margin-top: 15px;
+}
+.topnav {
+  overflow: hidden;
+  background-color: #58257b;
+}
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.topnav a:hover {
+  background-color: #db7093;
+  color: white;
+}
+.form-inline{
+  width: 600px;
+}
+#header-bot-input{
+  height: 50px;
+  width: 300px;
+}
+#header-bot-button{
+  height: 50px;
+}
+

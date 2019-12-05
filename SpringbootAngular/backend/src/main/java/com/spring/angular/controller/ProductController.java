@@ -22,7 +22,6 @@ public class ProductController {
     @GetMapping("/getProduct")
     public ApiResponse getAllProduct(){
         try {
-
             return ApiResponse.build(HttpServletResponse.SC_OK, true, "", productService.getAllProduct());
         }catch (Exception e){
             e.printStackTrace();

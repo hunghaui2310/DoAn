@@ -1,0 +1,107 @@
+html,body {
+  margin: 0;
+  padding: 0;
+}
+.slider {
+  width: 1024px;
+  margin: 2em auto;
+
+}
+
+.slider-wrapper {
+  width: 100%;
+  height: 400px;
+  position: relative;
+}
+
+.slide {
+  float: left;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 3s linear;
+}
+
+.slider-wrapper > .slide:first-child {
+  opacity: 1;
+}
+.left-top{
+  width: 230px;
+  min-height: 400px;
+  border: 1px solid #cccccc;
+  float:left;
+  margin-bottom: 5px;
+  margin-top: 32px;
+  margin-left: 17px;
+}
+.left-top h3{
+  font-family: Helvetica Neue;
+  margin-left: 22px;
+}
+.left-under{
+  text-align: center;
+}
+.content-left ul li{
+  margin-left: 25px;
+  list-style: inherit;
+  line-height: 30px;
+}
+.content-left ul li a{
+  color: #2D2D2D;
+  text-decoration: none;
+}
+.content-left ul li a:hover{
+  color: #c7254e;
+}
+.content-image{
+  margin-left: 250px;
+  margin-top: 10px;
+}
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: 160px;
+  height: 30px;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
