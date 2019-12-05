@@ -1,40 +1,65 @@
+<!DOCTYPE html>
 <head>
-
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
- <app-starter></app-starter>
- <!--  banner-grid-->
- <div class="left-top">
-  <h3>Danh mục</h3>
-  <div class="content-left">
-    <ul>
-      <li><a href="/product">Sản phẩm bán chạy</a></li>
-      <li><a href="/product">Sản phẩm khuyến mại</a></li>
-      <li><a href="/product">Sản phẩm mới ra mắt</a></li>
-    </ul>
+<app-starter></app-starter>
+<!--  banner-grid-->
+<div class="content">
+  <div class="left-top">
+    <h3>Danh mục</h3>
+    <div class="content-left">
+      <ul>
+        <li><a href="/product">Sản phẩm bán chạy</a></li>
+        <li><a href="/product">Sản phẩm khuyến mại</a></li>
+        <li><a href="/product">Sản phẩm mới ra mắt</a></li>
+      </ul>
+    </div>
+    <div class="left-under">
+      <h4>Tìm kiếm nâng cao</h4>
+      <div class="row">
+        <div class="col-md-4" style="text-align: center">Giá</div>
+        <div class="col-md-8" id="radio-group-price">
+          <form action="">
+            <input type="radio" name="price" value="male">Dưới 10 triệu<br>
+            <input type="radio" name="price" value="female">Từ 10 - 15 triệu<br>
+            <input type="radio" name="price" value="other">Từ 15 - 20 triệu<br>
+            <input type="radio" name="price" value="other">Trên 20 triệu<br>
+          </form>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-4" style="floa">Thể loại</div>
+        <div class="col-md-8">
+          <select class="custom-select" id="inputGroupSelect01">
+            <option selected>Phòng ăn</option>
+            <option value="1">Phòng khách</option>
+            <option value="2">Phòng ngủ</option>
+            <option value="2">Đồ thờ</option>
+          </select>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary btn-sm" style="margin-top: 15px; margin-left: 40px">Tìm kiếm</button>
+    </div>
   </div>
-   <div class="left-under">
-     <h4>Tìm kiếm nâng cao</h4>
-     <div class="dropdown">
-       <button class="dropbtn">Dropdown</button>
-       <div class="dropdown-content">
-         <a href="#">Link 1</a>
-         <a href="#">Link 2</a>
-         <a href="#">Link 3</a>
-       </div>
-     </div>
-   </div>
- </div>
-
- <div class="content-image">
-   <div class="slider" id="main-slider"><!-- outermost container element -->
-     <div class="slider-wrapper"><!-- innermost wrapper element -->
-       <img src="assets/images/product/ba1.jpg" alt="First" class="slide" /><!-- slides -->
-       <img src="assets/images/product/ba2.jpg" alt="Second" class="slide" />
-       <img src="assets/images/product/ba3.jpg" alt="Third" class="slide" />
-     </div>
-   </div>
- </div>
- <!--  end banner-grid-->
+  <div class="content-right">
+    <div class="content-image">
+      <div class="slider" id="main-slider"><!-- outermost container element -->
+        <div class="slider-wrapper"><!-- innermost wrapper element -->
+          <img src="assets/images/product/ba1.jpg" alt="First" class="slide"/><!-- slides -->
+          <img src="assets/images/product/ba2.jpg" alt="Second" class="slide"/>
+          <img src="assets/images/product/ba3.jpg" alt="Third" class="slide"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  end banner-grid-->
+<!--  product-->
+<app-product></app-product>
+<!--  end product-->
+<app-footer></app-footer>
 </body>

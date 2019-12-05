@@ -7,13 +7,15 @@ import { HttpClientModule } from '@angular/common/http';
 import {AppRoutingModule} from '../app-routing/app-routing.module';
 import { ProductComponent } from './product/product.component';
 import { StarterComponent } from './starter/starter.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ProductComponent,
-    StarterComponent
+    StarterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

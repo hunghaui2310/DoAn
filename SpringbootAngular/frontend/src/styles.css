@@ -5,6 +5,7 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
+@import "~@fortawesome/fontawesome-free/css/all.css";
 html, body{
   margin:0;
   font-size: 100%;
@@ -1243,7 +1244,6 @@ p.copy-right a:hover{
 .resp-tabs-container {
   padding: 0px;
   clear: left;
-
 }
 h2.resp-accordion {
   cursor: pointer;

@@ -13,7 +13,7 @@ export class ApiService {
     private http: HttpClient
   ) { }
 
-  homePage(): Observable<Product[]> {
+  getProduct(): Observable<Product[]> {
     return this.http.get<Product[]>(this.homeURL).pipe(
       tap(receiveProduct => console.log(`receiveProduct = ${JSON.stringify('receiveProduct')}`)),
       catchError(error => of([]))
