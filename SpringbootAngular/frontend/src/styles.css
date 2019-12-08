@@ -1642,7 +1642,7 @@ ul.multi-column-dropdown li a:hover{
 }
 /*-- coupons --*/
 .coupons{
-  background:url(assets/images/product/coupons.jpg) no-repeat center;
+  background:url(assets/images/coupons.jpg) no-repeat center;
   background-size:cover;
   -webkit-background-size: cover;
   -o-background-size: cover;
@@ -1681,7 +1681,7 @@ ul.multi-column-dropdown li a:hover{
 /*-- //coupons --*/
 /*-- contact --*/
 .page-head {
-  background: url(assets/images/product/ba2.jpg) no-repeat center;
+  background: url(assets/images/ba2.jpg) no-repeat center;
   background-size: cover;
   -webkit-background-size: cover;
   -o-background-size: cover;
@@ -1766,13 +1766,13 @@ h3.tittle {
   padding-top: 45px;
 }
 .contact-grid2{
-  background: url(assets/images/product/new2.jpg) no-repeat center;
+  background: url(assets/images/new2.jpg) no-repeat center;
 }
 .contact-grid1{
-  background: url(assets/images/product/new3.jpg) no-repeat center;
+  background: url(assets/images/new3.jpg) no-repeat center;
 }
 .contact-grid3{
-  background: url(assets/images/product/new4.jpg) no-repeat center;
+  background: url(assets/images/new4.jpg) no-repeat center;
 }
 .contact-grid h4 {
   color: #FDA30E;

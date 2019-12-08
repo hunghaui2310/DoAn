@@ -22,7 +22,7 @@ public class Category {
         this.id = id;
     }
 
-    @Column(name = "name")
+    @Column(name = "category_name")
     public String getNameCate() {
         return nameCate;
     }

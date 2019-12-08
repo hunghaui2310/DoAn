@@ -1,12 +1,14 @@
 package com.spring.angular.service.impl;
 
 import com.spring.angular.dto.ProductDTO;
+import com.spring.angular.helper.SearchRequest;
 import com.spring.angular.model.Product;
 import com.spring.angular.repository.ProductRepo;
 import com.spring.angular.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,22 +21,49 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductDTO> getAllProduct() {
-        long lngId = 0;
         List<Object[]> lstObject = productRepo.getProduct();
         List<ProductDTO> productDTOList = new ArrayList<>();
 
         String proName = ""; int price =0;
         int numLike = 0; String discount = "";
-        String img;
+        String img; BigInteger lngId;
         for(Object[] objects : lstObject){
             ProductDTO productDTO = new ProductDTO();
-            proName = String.valueOf(objects[0]);
-            price = (int) objects[1];
-            numLike = (int) objects[2];
-            discount = String.valueOf(objects[3]);
-            img = String.valueOf(objects[4]);
+            lngId = (BigInteger) objects[0];
+            proName = String.valueOf(objects[1]);
+            price = (int) objects[2];
+            numLike = (int) objects[3];
+            discount = String.valueOf(objects[4]);
+            img = String.valueOf(objects[5]);
 
-            productDTO.setId(lngId++);
+            productDTO.setId(lngId);
+            productDTO.setProductName(proName);
+            productDTO.setPrice(price);
+            productDTO.setNumLike(numLike);
+            productDTO.setDiscount(discount);
+            productDTO.setUrlImage(img);
+            productDTOList.add(productDTO);
+        }
+        return productDTOList;
+    }
+
+    @Override
+    public List<ProductDTO> searchProductByName(SearchRequest searchRequest) {
+        List<Object[]> list = productRepo.searchProduct(searchRequest);
+        List<ProductDTO> productDTOList = new ArrayList<>();
+        String proName = ""; int price =0;
+        int numLike = 0; String discount = "";
+        String img; BigInteger lngId;
+        for(Object[] objects : list){
+            ProductDTO productDTO = new ProductDTO();
+            lngId = (BigInteger) objects[0];
+            proName = String.valueOf(objects[1]);
+            price = (int) objects[2];
+            numLike = (int) objects[3];
+            discount = String.valueOf(objects[4]);
+            img = String.valueOf(objects[5]);
+
+            productDTO.setId(lngId);
             productDTO.setProductName(proName);
             productDTO.setPrice(price);
             productDTO.setNumLike(numLike);

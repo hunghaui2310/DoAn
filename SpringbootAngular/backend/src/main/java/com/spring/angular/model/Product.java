@@ -9,7 +9,7 @@ public class Product {
 
     private Long id;
     private String productName;
-    private double price;
+    private int price;
     private String description;
     private Date createDate;
     private Long numLike;
@@ -38,11 +38,11 @@ public class Product {
     }
 
     @Column(name = "price")
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

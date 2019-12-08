@@ -1,19 +1,21 @@
 package com.spring.angular.dto;
 
+import java.math.BigInteger;
+
 public class ProductDTO {
 
-    private Long id;
+    private BigInteger id;
     private String productName;
     private int price;
     private int numLike;
     private String discount;
     private String urlImage;
 
-    public Long getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 
