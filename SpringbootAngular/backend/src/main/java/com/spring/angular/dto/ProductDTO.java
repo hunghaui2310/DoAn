@@ -4,18 +4,18 @@ import java.math.BigInteger;
 
 public class ProductDTO {
 
-    private BigInteger id;
+    private Long id;
     private String productName;
     private int price;
-    private int numLike;
+    private Long numLike;
     private String discount;
     private String urlImage;
 
-    public BigInteger getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(BigInteger id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -35,11 +35,11 @@ public class ProductDTO {
         this.price = price;
     }
 
-    public int getNumLike() {
+    public Long getNumLike() {
         return numLike;
     }
 
-    public void setNumLike(int numLike) {
+    public void setNumLike(Long numLike) {
         this.numLike = numLike;
     }
 

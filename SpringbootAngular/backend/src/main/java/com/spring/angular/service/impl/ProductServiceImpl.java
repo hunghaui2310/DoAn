@@ -1,6 +1,7 @@
 package com.spring.angular.service.impl;
 
 import com.spring.angular.dto.ProductDTO;
+import com.spring.angular.helper.DataUtil;
 import com.spring.angular.helper.SearchRequest;
 import com.spring.angular.model.Product;
 import com.spring.angular.repository.ProductRepo;
@@ -25,14 +26,14 @@ public class ProductServiceImpl implements ProductService {
         List<ProductDTO> productDTOList = new ArrayList<>();
 
         String proName = ""; int price =0;
-        int numLike = 0; String discount = "";
-        String img; BigInteger lngId;
+        Long numLike; String discount = "";
+        String img; Long lngId;
         for(Object[] objects : lstObject){
             ProductDTO productDTO = new ProductDTO();
-            lngId = (BigInteger) objects[0];
+            lngId = DataUtil.safeToLong(objects[0]);
             proName = String.valueOf(objects[1]);
             price = (int) objects[2];
-            numLike = (int) objects[3];
+            numLike = DataUtil.safeToLong(objects[3]);
             discount = String.valueOf(objects[4]);
             img = String.valueOf(objects[5]);
 
@@ -52,14 +53,14 @@ public class ProductServiceImpl implements ProductService {
         List<Object[]> list = productRepo.searchProduct(searchRequest);
         List<ProductDTO> productDTOList = new ArrayList<>();
         String proName = ""; int price =0;
-        int numLike = 0; String discount = "";
-        String img; BigInteger lngId;
+        Long numLike; String discount = "";
+        String img; Long lngId;
         for(Object[] objects : list){
             ProductDTO productDTO = new ProductDTO();
-            lngId = (BigInteger) objects[0];
+            lngId = DataUtil.safeToLong(objects[0]);
             proName = String.valueOf(objects[1]);
             price = (int) objects[2];
-            numLike = (int) objects[3];
+            numLike = DataUtil.safeToLong(objects[3]);
             discount = String.valueOf(objects[4]);
             img = String.valueOf(objects[5]);
 
