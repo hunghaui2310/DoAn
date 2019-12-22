@@ -5,7 +5,6 @@ import {Category} from '../../model/Category';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {config} from '../../app-routing/application.config';
-import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -31,7 +30,7 @@ export class HomeComponent implements OnInit {
   getComboboxCate() {
     this.getCategory().subscribe(
       vobjNext => {
-        this.categories = vobjNext;
+        this.categories = vobjNext['data'];
       },
       error => (console.error('Không có dữ liệu'))
     );

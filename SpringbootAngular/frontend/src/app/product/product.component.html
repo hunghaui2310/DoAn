@@ -19,6 +19,13 @@
         </div>
       </div>
     </div>
+    <div *ngIf="products.length > 0">
+      <pagination-controls (pagechange)="pageChange($event)" maxSize="7" directionLinks="true"
+                           autoHide="false" responsive="false" previousLabel="Trước"
+                           nextLabel="Tiếp" screenReaderPaginationLabel="Pagination"
+                           screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
+      </pagination-controls>
+    </div>
   </div>
 </div>
 

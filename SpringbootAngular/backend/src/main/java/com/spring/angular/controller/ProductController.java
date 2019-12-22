@@ -31,17 +31,6 @@ public class ProductController {
         }
     }
 
-    @GetMapping("/fakeData")
-    public List<ProductDTO> getFakeData(){
-        List<ProductDTO> list = productService.getAllProduct();
-        try{
-            return list;
-        }catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }
-    }
-
     @GetMapping("/search")
     public List<ProductDTO> searchProduct(@RequestBody SearchRequest searchRequest){
         List<ProductDTO> list = productService.searchProductByName(searchRequest);
