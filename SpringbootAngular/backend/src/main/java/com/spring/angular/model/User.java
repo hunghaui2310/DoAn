@@ -113,7 +113,6 @@ public  class User implements UserDetails{
         return username;
     }
 
-
     public String getRole() {
         return role;
     }
