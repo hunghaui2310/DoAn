@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {Category} from '../../model/Category';
 import {HttpClient} from '@angular/common/http';
 import {config} from '../../app-routing/application.config';
+import {ProductService} from '../service/product.service';
 
 @Component({
   selector: 'app-product',
@@ -15,20 +16,15 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private productService: ApiService
+    private productService: ProductService
   ) { }
   products: Product[];
   currentP = 1;
   pageSize: 12;
   mstrstatus = '';
 
-  // @ts-ignore
-  productAPI(): Observable<Category[]> {
-    return this.http.get<Category[]>(config.product_API);
-  }
-
   getProduct() {
-      this.productAPI().subscribe(
+      this.productService.productAPI().subscribe(
         (dataProducts) => {
           this.products = dataProducts['data'];
           },
@@ -47,6 +43,11 @@ export class ProductComponent implements OnInit {
     this.mstrstatus = '';
     this.currentP = page;
     console.log('fffff', this.currentP);
+  }
+
+  productDetail(id: number) {
+    this.productService.proDetailAPI(id);
+    console.log('productId = ', id);
   }
 
   ngOnInit() {

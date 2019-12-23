@@ -13,7 +13,7 @@
             <a class="d-block mb-0 thumbnail"><img src="assets/images/product/{{eachProduct.urlImage}}" alt="Image" class="img-fluid"></a>
           </div>
           <div class="hotel-room-body">
-            <h3 class="heading mb-0"><a href="#">{{eachProduct.productName}}</a></h3>
+            <h3 class="heading mb-0"><a href="#" (click)="productDetail(eachProduct.id)">{{eachProduct.productName}}</a></h3>
             <strong class="price">{{eachProduct.price}}</strong>
           </div>
         </div>
