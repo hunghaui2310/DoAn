@@ -101,4 +101,26 @@ public class ProductServiceImpl implements ProductService {
         List<String> lstSting = productRepo.lstImageProduct(id);
         return lstSting;
     }
+
+    @Override
+    public List<ProductDTO> getProByNumLike() {
+        List<Object[]> lstObject = productRepo.getProOrderByNumLike();
+        ProductDTO productDTO = null;
+        List<ProductDTO> lstProductDTO = new ArrayList<>();
+        if(lstObject != null) {
+            for (Object[] object : lstObject) {
+                productDTO = new ProductDTO();
+                productDTO.setId(DataUtil.safeToLong(object[0]));
+                productDTO.setProductName(DataUtil.safeToString(object[1]));
+                productDTO.setPrice(DataUtil.safeToInt(object[2]));
+                productDTO.setNumLike(DataUtil.safeToLong(object[3]));
+                productDTO.setDiscount(DataUtil.safeToString(object[4]));
+                productDTO.setUrlImage(DataUtil.safeToString(object[5]));
+                lstProductDTO.add(productDTO);
+            }
+        }else 
+            productDTO.setNoData(true);
+        
+        return lstProductDTO;
+    }
 }

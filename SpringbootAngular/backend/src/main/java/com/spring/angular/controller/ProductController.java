@@ -19,9 +19,6 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @Autowired
-    private CategoryServiceImpl categoryService;
-
     @GetMapping("/getProduct")
     public ApiResponse getAllProduct(){
         try {
@@ -62,6 +59,17 @@ public class ProductController {
         try{
             List<String> getImg = productService.getImageByProId(id);
             return ApiResponse.build(HttpServletResponse.SC_OK, true, "", getImg);
+        }catch (Exception e){
+            e.printStackTrace();
+            return ApiResponse.build(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, false, Contains.ERROR, null);
+        }
+    }
+
+    @GetMapping("/bestSale")
+    public ApiResponse getProByNumLike(){
+        try {
+            List<ProductDTO> lstData = productService.getProByNumLike();
+            return ApiResponse.build(HttpServletResponse.SC_OK, true, "", lstData);
         }catch (Exception e){
             e.printStackTrace();
             return ApiResponse.build(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, false, Contains.ERROR, null);

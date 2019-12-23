@@ -1,5 +1,6 @@
 package com.spring.angular.repository.impl;
 
+import com.spring.angular.dto.ProductDTO;
 import com.spring.angular.helper.SearchRequest;
 import com.spring.angular.model.Product;
 import com.spring.angular.repository.ProductRepo;
@@ -79,6 +80,17 @@ public class ProductRepoImpl implements ProductRepo {
                 "and f.product_id = :productId");
         Query query = entityManager.createNativeQuery(stringBuilder.toString());
         query.setParameter("productId",productId);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Object[]> getProOrderByNumLike() {
+        StringBuilder sqlBuilder = new StringBuilder();
+        sqlBuilder.append("select p.product_id,p.product_name,p.price,p.num_like,p.discount,f.url" +
+                " FROM product p, file_info f,category c" +
+                " WHERE f.file_type_id = 1 AND p.product_id = f.product_id AND p.category_id = c.category_id" +
+                " order by p.num_like desc");
+        Query query = entityManager.createNativeQuery(sqlBuilder.toString());
         return query.getResultList();
     }
 

@@ -15,4 +15,6 @@ public interface ProductService {
     ProductDTO getProductById(Long id);
 
     List<String> getImageByProId(Long id);
+
+    List<ProductDTO> getProByNumLike();
 }

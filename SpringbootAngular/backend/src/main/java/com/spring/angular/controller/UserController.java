@@ -1,6 +1,5 @@
 package com.spring.angular.controller;
 
-import com.spring.angular.helper.ApiResponse;
 import com.spring.angular.helper.Contains;
 import com.spring.angular.helper.CustomErrorType;
 import com.spring.angular.model.User;
@@ -12,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
 
 @RestController
@@ -39,7 +37,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/login")
+    @RequestMapping("/login")
     public Principal login(Principal principal){
         logger.info("USER LOGGED" + principal);
         return principal;
