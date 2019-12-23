@@ -74,4 +74,31 @@ public class ProductServiceImpl implements ProductService {
         }
         return productDTOList;
     }
+
+    @Override
+    public ProductDTO getProductById(Long id) {
+        Object[] objects = null;
+        ProductDTO productDTO = new ProductDTO();
+        if(productRepo.getProductById(id) != null){
+            objects = productRepo.getProductById(id);
+        }
+        if(objects != null) {
+            productDTO.setDescription(DataUtil.safeToString(objects[0]));
+            productDTO.setPrice(DataUtil.safeToInt(objects[1]));
+            productDTO.setNumLike(DataUtil.safeToLong(objects[2]));
+            productDTO.setProductName(DataUtil.safeToString(objects[3]));
+            productDTO.setDiscount(DataUtil.safeToString(objects[4]));
+            productDTO.setUrlImage(DataUtil.safeToString(objects[5]));
+            productDTO.setNoData(false);
+            return productDTO;
+        }else
+            productDTO.setNoData(true);
+        return productDTO;
+    }
+
+    @Override
+    public List<String> getImageByProId(Long id) {
+        List<String> lstSting = productRepo.lstImageProduct(id);
+        return lstSting;
+    }
 }

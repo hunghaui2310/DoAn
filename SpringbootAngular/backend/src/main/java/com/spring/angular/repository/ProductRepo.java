@@ -12,4 +12,8 @@ public interface ProductRepo{
     List<Object[]> getProduct();
 
     List<Object[]> searchProduct(SearchRequest searchRequest);
+
+    Object[] getProductById(Long productId);
+
+    List<String> lstImageProduct(Long productId);
 }

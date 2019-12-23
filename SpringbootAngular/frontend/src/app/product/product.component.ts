@@ -46,6 +46,7 @@ export class ProductComponent implements OnInit {
     // }
     this.mstrstatus = '';
     this.currentP = page;
+    console.log('fffff', this.currentP);
   }
 
   ngOnInit() {

@@ -2,6 +2,7 @@ package com.spring.angular.controller;
 
 import com.spring.angular.dto.ProductDTO;
 import com.spring.angular.helper.ApiResponse;
+import com.spring.angular.helper.Contains;
 import com.spring.angular.helper.SearchRequest;
 import com.spring.angular.service.ProductService;
 import com.spring.angular.service.impl.CategoryServiceImpl;
@@ -32,8 +33,27 @@ public class ProductController {
     }
 
     @GetMapping("/search")
-    public List<ProductDTO> searchProduct(@RequestBody SearchRequest searchRequest){
-        List<ProductDTO> list = productService.searchProductByName(searchRequest);
-        return list;
+    public ApiResponse searchProduct(@RequestBody SearchRequest searchRequest) {
+        try {
+            List<ProductDTO> list = productService.searchProductByName(searchRequest);
+            return ApiResponse.build(HttpServletResponse.SC_OK, true, "", list);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ApiResponse.build(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, false, Contains.ERROR, null);
+        }
+    }
+
+    @GetMapping("/detail/{id}")
+    public ApiResponse getProductDetail(@PathVariable(value = "id") Long productId){
+        ApiResponse apiResponse = null;
+        try{
+            ProductDTO productDTO = productService.getProductById(productId);
+            if(productDTO != null)
+                return apiResponse.build(HttpServletResponse.SC_OK, true, "", productDTO);
+        }catch (Exception e){
+            e.printStackTrace();
+            return apiResponse.build(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, false, Contains.ERROR, null);
+        }
+        return apiResponse;
     }
 }

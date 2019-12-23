@@ -66,7 +66,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and()
                 .authorizeRequests()
-                .antMatchers("/account/register","/acount/login","logout","not-found","/product/getProduct","/category/getCategory").permitAll()
+                .antMatchers("/account/register","/acount/login","logout","not-found","/category/getCategory").permitAll()
+                .antMatchers("/product/**").permitAll()
         .anyRequest().fullyAuthenticated().and()
         .logout().permitAll()
         .logoutRequestMatcher(new AntPathRequestMatcher("/logout","POST"))

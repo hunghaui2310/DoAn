@@ -10,6 +10,8 @@ public class ProductDTO {
     private Long numLike;
     private String discount;
     private String urlImage;
+    private String description;
+    private boolean noData;
 
     public Long getId() {
         return id;
@@ -57,5 +59,21 @@ public class ProductDTO {
 
     public void setUrlImage(String urlImage) {
         this.urlImage = urlImage;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean getNoData() {
+        return noData;
+    }
+
+    public void setNoData(boolean noData) {
+        this.noData = noData;
     }
 }
