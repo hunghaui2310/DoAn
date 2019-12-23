@@ -15,6 +15,7 @@ import { LogoutComponent } from './account/logout/logout.component';
 import { NotFoundComponent } from './account/not-found/not-found.component';
 import { ProfileComponent } from './account/profile/profile.component';
 import { RegisterComponent } from './account/register/register.component';
+import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { RegisterComponent } from './account/register/register.component';
     LogoutComponent,
     NotFoundComponent,
     ProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

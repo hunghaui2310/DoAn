@@ -7,6 +7,7 @@ import {HttpClient} from '@angular/common/http';
 import {config} from '../../app-routing/application.config';
 import {SearchRequest} from '../../model/search.request';
 import {HomeService} from '../service/home.service';
+import {ProductService} from '../service/product.service';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,8 @@ export class HomeComponent implements OnInit {
     private http: HttpClient,
     private titleHome: Title,
     private searchHome: HomeService,
-    private categoryService: ApiService
+    private categoryService: ApiService,
+    private productService: ProductService
   ) {this.titleHome.setTitle('Đồ gỗ Huy Hùng'); }
   categories: Category[];
   mnbrCateId;
@@ -27,6 +29,8 @@ export class HomeComponent implements OnInit {
   price;
   productName;
   mblnChec = false;
+  searchModel: SearchRequest;
+  products;
 
   // @ts-ignore
   getCategory(): Observable<Category[]> {
@@ -51,11 +55,12 @@ export class HomeComponent implements OnInit {
     // this.categoryId = null;
     // this.price = null;
 
-    const searchModel: SearchRequest = new SearchRequest(null,  this.mnbrCateId, this.price);
-    console.log('search', searchModel);
-    this.searchHome.search(searchModel).subscribe(
+    this.searchModel = new SearchRequest(null,  this.mnbrCateId, this.price);
+    console.log('search', this.searchModel);
+    this.searchHome.search(this.searchModel).subscribe(
       data => {
-        console.log(data['"data"']);
+        console.log(data['data']);
+        this.products = data['data'];
       },
       error => {
         console.error('loi search', error);
@@ -69,6 +74,16 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.mnbrCateId = null;
     this.getComboboxCate();
+    this.getProduct();
+  }
+
+  getProduct() {
+    this.productService.productAPI().subscribe(
+      (dataProducts) => {
+        this.products = dataProducts['data'];
+      },
+      error => (console.error('Không có dữ liệu'))
+    );
   }
 
 }

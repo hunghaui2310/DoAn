@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<head>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
+<!--<!DOCTYPE html>-->
+<!--<head>-->
+<!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
+<!--        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+<!--</head>-->
 
-<body>
-<app-starter></app-starter>
+<!--<body>-->
+
 <!--  banner-grid-->
 <div class="content">
   <div class="left-top">
@@ -57,7 +57,8 @@
 </div>
 <!--  end banner-grid-->
 <!--  product-->
-<app-product></app-product>
+<app-product [productList]="products"></app-product>
+<!--<router-outlet></router-outlet>-->
 <!--  end product-->
-<app-footer></app-footer>
-</body>
+<!--<app-footer></app-footer>-->
+
