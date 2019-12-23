@@ -35,13 +35,19 @@
   </div>
   <div class="topnav row">
     <div class="col-md-12">
-      <nav>
+      <nav class="row">
         <ul class="menu-top">
           <li><a routerLink="/home">Trang chủ</a></li>
           <li><a>Đồ gỗ công nghiệp</a></li>
           <li><a>Sản phẩm bán chạy</a></li>
           <li><a>Đặt hàng</a></li>
           <li><a>Đánh giá sản phẩm</a></li>
+<!--          <li><a [routerLink]="['/login']">Đăng nhập</a></li>-->
+<!--          <li><a [routerLink]="['/register']">Đăng kí</a></li>-->
+        </ul>
+        <ul class="col-sm-3">
+         <li><a [routerLink]="['/login']">Đăng nhập</a></li>
+         <li><a [routerLink]="['/register']">Đăng kí</a></li>
         </ul>
       </nav>
     </div>

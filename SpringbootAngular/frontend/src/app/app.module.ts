@@ -10,6 +10,11 @@ import { FooterComponent } from './footer/footer.component';
 import {AppRoutingModule} from './app-routing.module';
 import {FormsModule} from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { LoginComponent } from './account/login/login.component';
+import { LogoutComponent } from './account/logout/logout.component';
+import { NotFoundComponent } from './account/not-found/not-found.component';
+import { ProfileComponent } from './account/profile/profile.component';
+import { RegisterComponent } from './account/register/register.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +22,12 @@ import {NgxPaginationModule} from 'ngx-pagination';
     HomeComponent,
     ProductComponent,
     StarterComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    LogoutComponent,
+    NotFoundComponent,
+    ProfileComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

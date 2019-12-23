@@ -21,7 +21,7 @@ public class ProductRepoImpl implements ProductRepo {
         StringBuilder sqlBuilder = new StringBuilder();
         sqlBuilder.append("select p.product_id,p.product_name,p.price,p.num_like,p.discount,f.url" +
                 " from product p, file_info f,category c" +
-                " where p.product_id = f.product_id");
+                " where p.product_id = f.product_id and p.category_id = c.category_id");
         Query query = entityManager.createNativeQuery(sqlBuilder.toString());
         return query.getResultList();
     }
@@ -44,11 +44,11 @@ public class ProductRepoImpl implements ProductRepo {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(" where 1 = 1");
         stringBuilder.append(" and p.product_id = f.product_id");
+        stringBuilder.append(" and c.category_id = p.category_id");
         if(searchRequest.getProductName() != null){
             stringBuilder.append(" and p.product_name like '"+ searchRequest.getProductName() +"_%'");
         }
         if(searchRequest.getCategoryId() != null){
-            stringBuilder.append(" and c.category_id = p.category_id");
             stringBuilder.append(" and c.category_id = :categoryId");
             hashMap.put("categoryId", searchRequest.getCategoryId());
         }
