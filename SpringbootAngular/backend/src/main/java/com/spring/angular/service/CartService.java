@@ -11,4 +11,6 @@ public interface CartService {
     public String updateNumCart(Long userId) throws Exception;
 
     public CartDTO getCartByUser(Long userId) throws Exception;
+
+    String removeProFromCart(Long userId) throws Exception;
 }

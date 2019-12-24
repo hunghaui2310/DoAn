@@ -27,7 +27,7 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public String updateNumCart(Long userId) throws Exception {
-        String message = null;
+        String message;
         BigInteger oldNumCart = cartRepo.getNumCart(userId);
         BigInteger newNumCart = oldNumCart.add(BigInteger.valueOf(1));
         cartRepo.updateNumCart(userId,newNumCart);
@@ -64,5 +64,15 @@ public class CartServiceImpl implements CartService {
         cartDTO.setProductDTOList(lstProductDTO);
         cartDTO.setUserId(userId);
         return cartDTO;
+    }
+
+    @Override
+    public String removeProFromCart(Long userId) throws Exception {
+        String message;
+        BigInteger oldNumCart = cartRepo.getNumCart(userId);
+        BigInteger newNumCart = oldNumCart.subtract(BigInteger.valueOf(1));
+        cartRepo.updateNumCart(userId,newNumCart);
+        message = Contains.SUCCESS;
+        return message;
     }
 }

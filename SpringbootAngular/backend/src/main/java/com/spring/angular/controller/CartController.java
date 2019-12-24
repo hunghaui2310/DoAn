@@ -3,6 +3,7 @@ package com.spring.angular.controller;
 import com.spring.angular.dto.CartDTO;
 import com.spring.angular.helper.ApiResponse;
 import com.spring.angular.helper.Contains;
+import com.spring.angular.model.Cart;
 import com.spring.angular.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -68,6 +69,18 @@ public class CartController {
             Long userId = cartDTO.getUserId();
             BigInteger numCart = cartService.getNumCart(userId);
             return ApiResponse.build(HttpServletResponse.SC_OK, true, "", numCart);
+        }catch (Exception e){
+            e.printStackTrace();
+            return ApiResponse.build(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, false, Contains.ERROR, null);
+        }
+    }
+
+    @PostMapping("/remove")
+    public ApiResponse removeProFromCart(@RequestBody CartDTO cartDTO) throws Exception{
+        try {
+            Long userId = cartDTO.getUserId();
+            String message = cartService.removeProFromCart(userId);
+            return ApiResponse.build(HttpServletResponse.SC_OK, true, "", message);
         }catch (Exception e){
             e.printStackTrace();
             return ApiResponse.build(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, false, Contains.ERROR, null);
