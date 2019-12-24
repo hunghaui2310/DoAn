@@ -24,6 +24,11 @@ export class ProductComponent implements OnInit, AfterViewInit {
   pageSize: 12;
   mstrstatus = '';
 
+  ngOnInit() {
+    console.log(this.productList);
+    // this.getProduct();
+  }
+
   pageChange(page: number) {
     let total = this.currentP * 12;
     if (this.currentP * 12 > this.productList.length) {
@@ -43,9 +48,7 @@ export class ProductComponent implements OnInit, AfterViewInit {
     console.log('productId = ', id);
   }
 
-  ngOnInit() {
-    // this.getProduct();
-  }
+
 
   ngAfterViewInit(): void {
     if (!this.productList) {

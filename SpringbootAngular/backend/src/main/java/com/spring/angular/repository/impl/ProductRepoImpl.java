@@ -23,8 +23,8 @@ public class ProductRepoImpl implements ProductRepo {
     public List<Object[]> getProduct() {
         StringBuilder sqlBuilder = new StringBuilder();
         sqlBuilder.append("select p.product_id,p.product_name,p.price,p.num_like,p.discount,f.url" +
-                " from product p, file_info f,category c" +
-                " where f.file_type_id = 1 and p.product_id = f.product_id and p.category_id = c.category_id");
+                " from product p, file_info f" +
+                " where f.file_type_id = 1 and p.product_id = f.product_id and p.discount is not null");
         Query query = entityManager.createNativeQuery(sqlBuilder.toString());
         return query.getResultList();
     }
@@ -39,12 +39,12 @@ public class ProductRepoImpl implements ProductRepo {
         Query query = entityManager.createNativeQuery(sqlBuilder.toString());
         hashMap.forEach((k,v)->{
             query.setParameter(k.toString(),v);
-        });;
+        });
         return query.getResultList();
     }
 
     /**
-     * du lieu cua tung san pham theo id, mac dinh anh la anh co filr_type_id = 2
+     * du lieu cua tung san pham theo id, mac dinh anh la anh co file_type_id = 2
      *
      * @param productId
      * @return Product
@@ -67,7 +67,7 @@ public class ProductRepoImpl implements ProductRepo {
     }
 
     /**
-     * lay ra list anh cua san pham co laoi file la 3
+     * lay ra list anh cua san pham co loai file la 3
      *
      * @param productId
      * @return chuoi anh

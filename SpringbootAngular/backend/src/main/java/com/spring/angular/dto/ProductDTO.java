@@ -12,6 +12,7 @@ public class ProductDTO {
     private String urlImage;
     private String description;
     private boolean noData;
+    private String categoryName;
 
     public Long getId() {
         return id;
@@ -75,5 +76,13 @@ public class ProductDTO {
 
     public void setNoData(boolean noData) {
         this.noData = noData;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 }
