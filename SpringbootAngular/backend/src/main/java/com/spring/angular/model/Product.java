@@ -15,7 +15,7 @@ public class Product {
     private Long numLike;
     private Long categoryId;
     private String link;
-    private String discount;
+    private int discount;
 
     @Id
     @GeneratedValue
@@ -92,12 +92,11 @@ public class Product {
     }
 
     @Column(name = "discount")
-    public String getDiscount() {
+    public int getDiscount() {
         return discount;
     }
 
-    public void setDiscount(String discount) {
+    public void setDiscount(int discount) {
         this.discount = discount;
     }
-
 }

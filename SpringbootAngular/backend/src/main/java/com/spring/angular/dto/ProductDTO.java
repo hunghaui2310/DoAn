@@ -8,11 +8,12 @@ public class ProductDTO {
     private String productName;
     private int price;
     private Long numLike;
-    private String discount;
+    private int discount;
     private String urlImage;
     private String description;
     private boolean noData;
     private String categoryName;
+    private double realPrice;
 
     public Long getId() {
         return id;
@@ -30,28 +31,12 @@ public class ProductDTO {
         this.productName = productName;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
     public Long getNumLike() {
         return numLike;
     }
 
     public void setNumLike(Long numLike) {
         this.numLike = numLike;
-    }
-
-    public String getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(String discount) {
-        this.discount = discount;
     }
 
     public String getUrlImage() {
@@ -84,5 +69,29 @@ public class ProductDTO {
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
+    public double getRealPrice() {
+        return realPrice;
+    }
+
+    public void setRealPrice(double realPrice) {
+        this.realPrice = realPrice;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

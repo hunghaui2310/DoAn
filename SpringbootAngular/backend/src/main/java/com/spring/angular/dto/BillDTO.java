@@ -2,12 +2,11 @@ package com.spring.angular.dto;
 
 import java.util.List;
 
-public class CartDTO {
+public class BillDTO {
 
     private Long id;
-    private Long userId;
-    private Long productId;
     private List<ProductDTO> productDTOList;
+    private Long userId;
 
     public Long getId() {
         return id;
@@ -15,14 +14,6 @@ public class CartDTO {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
     }
 
     public List<ProductDTO> getProductDTOList() {
@@ -33,11 +24,11 @@ public class CartDTO {
         this.productDTOList = productDTOList;
     }
 
-    public Long getProductId() {
-        return productId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

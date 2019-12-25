@@ -26,12 +26,16 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public String updateNumCart(Long userId) throws Exception {
-        String message;
-        BigInteger oldNumCart = cartRepo.getNumCart(userId);
-        BigInteger newNumCart = oldNumCart.add(BigInteger.valueOf(1));
-        cartRepo.updateNumCart(userId,newNumCart);
-        message = Contains.SUCCESS;
+    public String updateNumCart(Long userId, Long productId) throws Exception {
+        String message = null;
+        List<Object[]> lstObject = cartRepo.checkDuplicate(userId,productId);
+        if(lstObject.size() > 0) {
+            BigInteger oldNumCart = cartRepo.getNumCart(userId);
+            BigInteger newNumCart = oldNumCart.add(BigInteger.valueOf(1));
+            cartRepo.updateNumCart(userId, newNumCart);
+            message = Contains.SUCCESS;
+        }else
+            message = Contains.DUPLICATE;
         return message;
     }
 
@@ -45,7 +49,7 @@ public class CartServiceImpl implements CartService {
             String proName = DataUtil.safeToString(object[1]);
             int price = DataUtil.safeToInt(object[2]);
             Long numLike = DataUtil.safeToLong(object[3]);
-            String discount = DataUtil.safeToString(object[4]);
+            int discount = DataUtil.safeToInt(object[4]);
             String urlImg = DataUtil.safeToString(object[5]);
             String cateName = DataUtil.safeToString(object[6]);
 
@@ -55,7 +59,7 @@ public class CartServiceImpl implements CartService {
             productDTO.setPrice(price);
             productDTO.setNumLike(numLike);
             productDTO.setDiscount(discount);
-            productDTO.setDiscount(urlImg);
+            productDTO.setUrlImage(urlImg);
             productDTO.setCategoryName(cateName);
             lstProductDTO.add(productDTO);
         }

@@ -9,8 +9,8 @@ import com.spring.angular.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigInteger;
-import java.sql.Blob;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,22 +20,26 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepo productRepo;
 
+    private DecimalFormat df = new DecimalFormat("###");
+    private NumberFormat format = NumberFormat.getInstance();
+
     @Override
     public List<ProductDTO> getAllProduct() {
         List<Object[]> lstObject = productRepo.getProduct();
         List<ProductDTO> productDTOList = new ArrayList<>();
 
-        String proName = ""; int price =0;
-        Long numLike; String discount = "";
+        String proName; int price;
+        Long numLike; int discount; double realPrice;
         String img; Long lngId;
         for(Object[] objects : lstObject){
             ProductDTO productDTO = new ProductDTO();
             lngId = DataUtil.safeToLong(objects[0]);
             proName = String.valueOf(objects[1]);
-            price = (int) objects[2];
+            price = DataUtil.safeToInt(objects[2]);
             numLike = DataUtil.safeToLong(objects[3]);
-            discount = String.valueOf(objects[4]);
+            discount = DataUtil.safeToInt(objects[4]);
             img = String.valueOf(objects[5]);
+            realPrice = DataUtil.safeToDouble(objects[6]);
 
             productDTO.setId(lngId);
             productDTO.setProductName(proName);
@@ -43,6 +47,7 @@ public class ProductServiceImpl implements ProductService {
             productDTO.setNumLike(numLike);
             productDTO.setDiscount(discount);
             productDTO.setUrlImage(img);
+            productDTO.setRealPrice(realPrice);
             productDTOList.add(productDTO);
         }
         return productDTOList;
@@ -52,17 +57,18 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductDTO> searchProductByName(SearchRequest searchRequest) {
         List<Object[]> list = productRepo.searchProduct(searchRequest);
         List<ProductDTO> productDTOList = new ArrayList<>();
-        String proName = ""; int price =0;
-        Long numLike; String discount = "";
+        String proName = ""; int price;
+        Long numLike; int discount; double realPrice;
         String img; Long lngId;
         for(Object[] objects : list){
             ProductDTO productDTO = new ProductDTO();
             lngId = DataUtil.safeToLong(objects[0]);
             proName = String.valueOf(objects[1]);
-            price = (int) objects[2];
+            price = DataUtil.safeToInt(objects[2]);
             numLike = DataUtil.safeToLong(objects[3]);
-            discount = String.valueOf(objects[4]);
+            discount = DataUtil.safeToInt(objects[4]);
             img = String.valueOf(objects[5]);
+            realPrice = DataUtil.safeToDouble(objects[6]);
 
             productDTO.setId(lngId);
             productDTO.setProductName(proName);
@@ -70,6 +76,7 @@ public class ProductServiceImpl implements ProductService {
             productDTO.setNumLike(numLike);
             productDTO.setDiscount(discount);
             productDTO.setUrlImage(img);
+            productDTO.setRealPrice(realPrice);
             productDTOList.add(productDTO);
         }
         return productDTOList;
@@ -87,7 +94,7 @@ public class ProductServiceImpl implements ProductService {
             productDTO.setPrice(DataUtil.safeToInt(objects[1]));
             productDTO.setNumLike(DataUtil.safeToLong(objects[2]));
             productDTO.setProductName(DataUtil.safeToString(objects[3]));
-            productDTO.setDiscount(DataUtil.safeToString(objects[4]));
+            productDTO.setDiscount(DataUtil.safeToInt(objects[4]));
             productDTO.setUrlImage(DataUtil.safeToString(objects[5]));
             productDTO.setNoData(false);
             return productDTO;
@@ -114,7 +121,7 @@ public class ProductServiceImpl implements ProductService {
                 productDTO.setProductName(DataUtil.safeToString(object[1]));
                 productDTO.setPrice(DataUtil.safeToInt(object[2]));
                 productDTO.setNumLike(DataUtil.safeToLong(object[3]));
-                productDTO.setDiscount(DataUtil.safeToString(object[4]));
+                productDTO.setDiscount(DataUtil.safeToInt(object[4]));
                 productDTO.setUrlImage(DataUtil.safeToString(object[5]));
                 lstProductDTO.add(productDTO);
             }

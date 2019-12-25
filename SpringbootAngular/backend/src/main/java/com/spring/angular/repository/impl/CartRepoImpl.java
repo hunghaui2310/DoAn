@@ -77,5 +77,19 @@ public class CartRepoImpl implements CartRepo {
         return query.getResultList();
     }
 
+    @Override
+    public List<Object[]> checkDuplicate(Long userId, Long productId) throws Exception {
+        StringBuilder sqlBuilder = new StringBuilder();
+        sqlBuilder.append("select p.product_id,p.product_name,p.price,p.num_like,p.discount,f.url,c.category_name" +
+                " from product p, file_info f, category c" +
+                " where p.product_id = f.product_id" +
+                " and c.category_id = p.category_id" +
+                " and p.cart_id = (select uc.cart_id from user_cart uc where uc.user_id = :userId)" +
+                " and p.product_id = :productId");
+        Query query = entityManager.createNativeQuery(sqlBuilder.toString());
+        query.setParameter("userId",userId);
+        query.setParameter("productId",productId);
+        return query.getResultList();
+    }
 
 }

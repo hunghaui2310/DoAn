@@ -3,6 +3,7 @@ export class Product {
   productName: string;
   price: number;
   numLike: number;
-  discount: string;
+  discount: number;
   urlImage: string;
+  realPrice: number;
 }

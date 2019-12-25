@@ -22,7 +22,7 @@ public class ProductRepoImpl implements ProductRepo {
     @Override
     public List<Object[]> getProduct() {
         StringBuilder sqlBuilder = new StringBuilder();
-        sqlBuilder.append("select p.product_id,p.product_name,p.price,p.num_like,p.discount,f.url" +
+        sqlBuilder.append("select p.product_id,p.product_name,p.price,p.num_like,p.discount,f.url,p.price-(p.price*p.discount/100) as real_price" +
                 " from product p, file_info f" +
                 " where f.file_type_id = 1 and p.product_id = f.product_id and p.discount is not null");
         Query query = entityManager.createNativeQuery(sqlBuilder.toString());
@@ -33,7 +33,7 @@ public class ProductRepoImpl implements ProductRepo {
     public List<Object[]> searchProduct(SearchRequest searchRequest) {
         StringBuilder sqlBuilder = new StringBuilder();
         HashMap hashMap = new HashMap();
-        sqlBuilder.append("select p.product_id,p.product_name,p.price,p.num_like,p.discount,f.url" +
+        sqlBuilder.append("select p.product_id,p.product_name,p.price,p.num_like,p.discount,f.url,p.price-(p.price*p.discount/100) as real_price" +
                 " from product p, file_info f, category c");
         sqlBuilder.append(sqlSearch(searchRequest,hashMap));
         Query query = entityManager.createNativeQuery(sqlBuilder.toString());

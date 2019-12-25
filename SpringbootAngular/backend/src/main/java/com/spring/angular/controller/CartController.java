@@ -49,7 +49,7 @@ public class CartController {
     public ApiResponse addToCart(@RequestBody CartDTO cartDTO) throws Exception{
         try {
             Long userId = cartDTO.getUserId();
-            String message = cartService.updateNumCart(userId);
+            String message = cartService.updateNumCart(userId,cartDTO.getProductId());
             return ApiResponse.build(HttpServletResponse.SC_OK, true, "", message);
         }catch (Exception e){
             e.printStackTrace();

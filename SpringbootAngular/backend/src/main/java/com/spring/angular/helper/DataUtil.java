@@ -53,4 +53,19 @@ public class DataUtil {
     public static int safeToInt(Object obj1) {
         return safeToInt(obj1, 0);
     }
+
+    public static Double safeToDouble(Object obj1, Double defaultValue) {
+        if (obj1 == null) {
+            return defaultValue;
+        }
+        try {
+            return Double.parseDouble(obj1.toString());
+        } catch (final NumberFormatException nfe) {
+            return defaultValue;
+        }
+    }
+
+    public static Double safeToDouble(Object obj1) {
+        return safeToDouble(obj1, 0.0);
+    }
 }

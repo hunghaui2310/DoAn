@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -16,6 +17,12 @@ import java.security.Principal;
 @RestController
 @RequestMapping("account")
 public class UserController {
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Autowired
     private UserService userService;
@@ -31,6 +38,7 @@ public class UserController {
                     new CustomErrorType("user with username " + newUser.getUsername() + "already exist "),
                     HttpStatus.CONFLICT);
         }else {
+            newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
             newUser.setRole(Contains.USER);
             User user = userService.saveUser(newUser);
             return new ResponseEntity<User>(user, HttpStatus.CREATED);
