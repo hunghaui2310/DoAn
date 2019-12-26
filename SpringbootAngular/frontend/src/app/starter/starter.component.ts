@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-starter',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StarterComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router) {}
 
   ngOnInit() {
   }
 
+  logOut() {
+    // this.authService.logOut();
+    // localStorage.removeItem('currentUser');
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/logout']);
+  }
 }

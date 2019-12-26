@@ -1,7 +1,5 @@
 package com.spring.angular.dto;
 
-import java.math.BigInteger;
-
 public class ProductDTO {
 
     private Long id;

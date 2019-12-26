@@ -30,16 +30,13 @@ export class ProductComponent implements OnInit, AfterViewInit {
   }
 
   pageChange(page: number) {
-    let total = this.currentP * 12;
-    if (this.currentP * 12 > this.productList.length) {
+    let total = this.currentP * 15;
+    if (this.currentP * 15 > this.productList.length) {
       total = this.productList.length;
     }
-    // for (let i = (this.currentP - 1) * 10; i < total; i++) {
-    //   this.products[i].check = false;
-    // }
     this.mstrstatus = '';
     this.currentP = page;
-    console.log('fffff', this.currentP);
+    console.log('page', this.currentP);
   }
 
   productDetail(id: number) {

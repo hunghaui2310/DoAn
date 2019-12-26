@@ -26,6 +26,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Bean
     @Primary
     public PasswordEncoder passwordEncoder() {
@@ -72,7 +73,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        System.out.println(passwordEncoder().encode("hoangpham"));
         http.cors().and()
                 .authorizeRequests()
                 .antMatchers("/account/register","/account/login","/logout","/not-found","/category/getCategory").permitAll()

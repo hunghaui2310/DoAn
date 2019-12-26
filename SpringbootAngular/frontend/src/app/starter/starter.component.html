@@ -29,7 +29,7 @@
     <div class="col-md-2 d-flex align-items-center">
       <div class="cart">
         <i class="fas fa-shopping-cart"></i>
-        <a routerLink=""> Giỏ hàng</a>
+        <a routerLink="/cart"> Giỏ hàng</a>
       </div>
     </div>
   </div>
@@ -45,7 +45,8 @@
 <!--          <li><a [routerLink]="['/login']">Đăng nhập</a></li>-->
 <!--          <li><a [routerLink]="['/register']">Đăng kí</a></li>-->
         </ul>
-        <ul class="menu-top col-md-2">
+        <ul class="menu-top col-md-3">
+         <li><a (click)="logOut()"> Đăng xuất</a></li>
          <li><a [routerLink]="['/login']">Đăng nhập</a></li>
          <li><a [routerLink]="['/register']">Đăng kí</a></li>
         </ul>

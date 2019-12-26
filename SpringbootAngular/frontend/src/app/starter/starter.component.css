@@ -39,18 +39,10 @@
   padding: 15px 8px;
   text-decoration: none;
 }
-
-.cart{
-  color: #008000;
-  text-align: center;
-}
-.cart a{
-  text-decoration: none;
-  color: #008000;
-}
-.cart a:hover{
-  color: orange;
-}
 . full-input{
   flex:1;
 }
+.cart>i{
+  color: blue;
+}
+
