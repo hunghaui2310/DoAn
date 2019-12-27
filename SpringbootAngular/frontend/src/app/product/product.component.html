@@ -14,8 +14,8 @@
           <div class="card-body">
               <h5 class="card-title"><a routerLink="/product"
                                           (click)="productDetail(eachProduct.id)">{{eachProduct.productName}}</a></h5>
-              <div class="w-100">
-                <p >{{eachProduct.realPrice * 1000000 | number}} VNĐ  <del *ngIf="eachProduct.discount != 'null'" class="col-6">{{eachProduct.price * 1000000 | number}}VNĐ
+              <div class="w-100 price">
+                <p>Giá {{eachProduct.realPrice * 1000000 | number}} VNĐ  <del *ngIf="eachProduct.discount != 'null'" class="col-6">{{eachProduct.price * 1000000 | number}}VNĐ
                 </del></p>
 
               </div>

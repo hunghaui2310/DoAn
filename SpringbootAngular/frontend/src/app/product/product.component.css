@@ -16,8 +16,8 @@
   right: 0px;
 }
 .price{
-  color: #d94f5c;
+  color: red;
 }
-.carti{
+.cart:hover{
   color: blue;
 }
