@@ -6,5 +6,9 @@ export const config = {
   search_product: URL_BASE + '/product/search',
   img_product: URL_BASE + '/product/image',
   product_detail: URL_BASE + '/product/detail',
-  show_order: URL_BASE + '/order/showAll'
+  show_order: URL_BASE + '/order/showAll',
+  cart_show: URL_BASE + '/cart/show',
+  add_cart: URL_BASE + '/cart/addCart',
+  get_num_cart: URL_BASE + '/cart/getNum',
+  remove_cart: URL_BASE + '/cart/remove'
 };

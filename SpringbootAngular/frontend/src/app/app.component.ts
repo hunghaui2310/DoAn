@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   static API_URL = 'http://localhost:8083';
-  title = 'frontend';
+  title = 'Đồ gỗ Huy Hùng';
 }
