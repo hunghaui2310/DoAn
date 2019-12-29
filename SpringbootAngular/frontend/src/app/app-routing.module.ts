@@ -9,6 +9,8 @@ import {NotFoundComponent} from './account/not-found/not-found.component';
 import {ProfileComponent} from './account/profile/profile.component';
 import {ApiService} from '../api.service';
 import {ProductDetailComponent} from './product/product-detail/product-detail.component';
+import {OrderComponent} from './cart/order/order.component';
+import {CartDetailComponent} from './cart/cart-detail/cart-detail.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -18,8 +20,11 @@ const routes: Routes = [
       path: 'home', component: HomeComponent
     }, {
       path: 'product', component: ProductDetailComponent
+    }, {
+      path: 'order', component: OrderComponent
+    }, {
+      path: 'cart', component: CartDetailComponent
     }
-
     ]
   },
   {path: 'profile', component: ProfileComponent, canActivate: [ApiService]},

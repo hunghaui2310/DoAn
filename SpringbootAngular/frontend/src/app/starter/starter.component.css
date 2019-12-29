@@ -20,10 +20,10 @@
 }
 .topnav {
   overflow: hidden;
-  background-color: #58257b;
+  background-color: #602D00;;
 }
 .topnav a:hover {
-  background-color: tomato;
+  background-color: chocolate;
   color: white;
 }
 .menu-top{

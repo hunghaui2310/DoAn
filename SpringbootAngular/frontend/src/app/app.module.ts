@@ -16,6 +16,8 @@ import { NotFoundComponent } from './account/not-found/not-found.component';
 import { ProfileComponent } from './account/profile/profile.component';
 import { RegisterComponent } from './account/register/register.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
+import { OrderComponent } from './cart/order/order.component';
+import {CartDetailComponent} from './cart/cart-detail/cart-detail.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { ProductDetailComponent } from './product/product-detail/product-detail.
     NotFoundComponent,
     ProfileComponent,
     RegisterComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    CartDetailComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

@@ -5,5 +5,6 @@ export const config = {
   product_API: URL_BASE + '/product/getProduct',
   search_product: URL_BASE + '/product/search',
   img_product: URL_BASE + '/product/image',
-  product_detail: URL_BASE + '/product/detail'
+  product_detail: URL_BASE + '/product/detail',
+  show_order: URL_BASE + '/order/showAll'
 };
