@@ -28,9 +28,10 @@ public class CartRepoImpl implements CartRepo {
     public BigInteger getNumCart(Long userId){
         try {
             StringBuilder sqlBuilder = new StringBuilder();
-            sqlBuilder.append("select c.cart_num from cart c, user_cart uc, user u" +
-                    " where u.id = (select user_id from user_cart where u.id = uc.user_id)" +
-                    " and u.id = :userId");
+            sqlBuilder.append("SELECT c.cart_num from cart c, user_cart uc, user u" +
+                    " WHERE u.id = uc.user_id" +
+                    " AND c.id = uc.cart_id" +
+                    " AND u.id = :userId");
             Query query = entityManager.createNativeQuery(sqlBuilder.toString());
             query.setParameter("userId",userId);
             return (BigInteger) query.getSingleResult();

@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit {
   ) {this.titleHome.setTitle('Đồ gỗ Huy Hùng'); }
   categories: Category[];
   mnbrCateId;
-  categoryId;
   price;
   productName;
   mblnChec = false;
@@ -85,5 +84,4 @@ export class HomeComponent implements OnInit {
       error => (console.error('Không có dữ liệu'))
     );
   }
-
 }

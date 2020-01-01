@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {HomeService} from '../service/home.service';
 
 @Component({
   selector: 'app-starter',
@@ -8,7 +9,9 @@ import {Router} from '@angular/router';
 })
 export class StarterComponent implements OnInit {
 
-  constructor(public router: Router) {}
+  constructor(public router: Router,
+              private showNumCart: HomeService) {}
+  numCart;
 
   ngOnInit() {
   }
@@ -18,5 +21,15 @@ export class StarterComponent implements OnInit {
     // localStorage.removeItem('currentUser');
     localStorage.removeItem('currentUser');
     this.router.navigate(['/logout']);
+  }
+
+  showNumberCart(userId: 2) {
+    this.showNumCart.showNumberCartAPI(userId).subscribe(
+      (showNum) => {
+        this.numCart = showNum['data'];
+        console.log('userId', userId);
+      },
+      error => (console.error('Không có dữ liệu'))
+    );
   }
 }

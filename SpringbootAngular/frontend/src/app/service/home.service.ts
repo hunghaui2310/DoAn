@@ -13,4 +13,8 @@ export class HomeService {
   search(searchModel: SearchRequest) {
     return this.http.post(config.search_product, searchModel);
   }
+
+  showNumberCartAPI(userId: 2) {
+    return this.http.post(config.get_num_cart, userId);
+  }
 }

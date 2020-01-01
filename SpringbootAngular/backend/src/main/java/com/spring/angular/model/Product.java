@@ -14,7 +14,6 @@ public class Product {
     private Date createDate;
     private Long numLike;
     private Long categoryId;
-    private String link;
     private int discount;
 
     @Id
@@ -80,15 +79,6 @@ public class Product {
 
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
-    }
-
-    @Column(name = "link")
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
     }
 
     @Column(name = "discount")
