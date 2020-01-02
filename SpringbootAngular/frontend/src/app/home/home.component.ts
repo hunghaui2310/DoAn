@@ -8,6 +8,7 @@ import {config} from '../../app-routing/application.config';
 import {SearchRequest} from '../../model/search.request';
 import {HomeService} from '../service/home.service';
 import {ProductService} from '../service/product.service';
+import {Price, prices} from '../../model/price';
 
 @Component({
   selector: 'app-home',
@@ -16,20 +17,41 @@ import {ProductService} from '../service/product.service';
 })
 export class HomeComponent implements OnInit {
 
+  priceList: Price[] = prices;
+  categories: Category[];
+  mnbrCateId;
+  price;
+  radioSelected: string;
+  radioSel: any;
+  radioSelectedString: string;
+  productName;
+  mblnChec = false;
+  searchModel: SearchRequest;
+  products;
+
   constructor(
     private http: HttpClient,
     private titleHome: Title,
     private searchHome: HomeService,
     private categoryService: ApiService,
     private productService: ProductService
-  ) {this.titleHome.setTitle('Đồ gỗ Huy Hùng'); }
-  categories: Category[];
-  mnbrCateId;
-  price;
-  productName;
-  mblnChec = false;
-  searchModel: SearchRequest;
-  products;
+  ) {
+    this.titleHome.setTitle('Đồ gỗ Huy Hùng');
+    this.priceList = prices;
+    this.radioSelected = 'Trên 20 triệu';
+    this.getSelectedItem();
+    }
+
+  getSelectedItem() {
+    // @ts-ignore
+    // tslint:disable-next-line:no-shadowed-variable
+    this.radioSel = prices.find(Price => Price.value === this.radioSelected);
+    this.radioSelectedString = JSON.stringify(this.radioSel);
+  }
+
+  onItemChange() {
+    this.getSelectedItem();
+  }
 
   // @ts-ignore
   getCategory(): Observable<Category[]> {
@@ -54,7 +76,8 @@ export class HomeComponent implements OnInit {
     // this.categoryId = null;
     // this.price = null;
 
-    this.searchModel = new SearchRequest(null,  this.mnbrCateId, this.price);
+    // @ts-ignore
+    this.searchModel = new SearchRequest(null,  this.mnbrCateId, this.getSelectedItem());
     console.log('search', this.searchModel);
     this.searchHome.search(this.searchModel).subscribe(
       data => {

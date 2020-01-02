@@ -3,18 +3,18 @@ export class Price {
   name: string;
 }
 
-const prices: Price[] = [
+export const prices: Price[] = [
   {
     value: 1,
     name: 'Dưới 10 triệu'
   },
   {
     value: 2,
-    name: 'Từ 10 đến 15 triệu'
+    name: 'Từ 10 - 15 triệu'
   },
   {
     value: 3,
-    name: 'Từ 15 đến 20 triệu'
+    name: 'Từ 15 - 20 triệu'
   },
   {
     value: 4,

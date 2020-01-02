@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface ProductRepo{
 
-    List<Object[]> getProduct();
+    List<Object[]> getProduct(String condition);
 
     List<Object[]> searchProduct(SearchRequest searchRequest);
 

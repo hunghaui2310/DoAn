@@ -3,7 +3,6 @@ package com.spring.angular.service.impl;
 import com.spring.angular.dto.ProductDTO;
 import com.spring.angular.helper.DataUtil;
 import com.spring.angular.helper.SearchRequest;
-import com.spring.angular.model.Product;
 import com.spring.angular.repository.ProductRepo;
 import com.spring.angular.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +23,18 @@ public class ProductServiceImpl implements ProductService {
     private NumberFormat format = NumberFormat.getInstance();
 
     @Override
-    public List<ProductDTO> getAllProduct() {
-        List<Object[]> lstObject = productRepo.getProduct();
+    public List<ProductDTO> getAllProduct(String condition) {
+        List<Object[]> lstObject = productRepo.getProduct(condition);
         List<ProductDTO> productDTOList = new ArrayList<>();
 
-        String proName; int price;
-        Long numLike; int discount; double realPrice;
-        String img; Long lngId;
-        for(Object[] objects : lstObject){
+        String proName;
+        int price;
+        Long numLike;
+        int discount;
+        double realPrice;
+        String img;
+        Long lngId;
+        for (Object[] objects : lstObject) {
             ProductDTO productDTO = new ProductDTO();
             lngId = DataUtil.safeToLong(objects[0]);
             proName = String.valueOf(objects[1]);
@@ -57,10 +60,14 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductDTO> searchProductByName(SearchRequest searchRequest) {
         List<Object[]> list = productRepo.searchProduct(searchRequest);
         List<ProductDTO> productDTOList = new ArrayList<>();
-        String proName = ""; int price;
-        Long numLike; int discount; double realPrice;
-        String img; Long lngId;
-        for(Object[] objects : list){
+        String proName = "";
+        int price;
+        Long numLike;
+        int discount;
+        double realPrice;
+        String img;
+        Long lngId;
+        for (Object[] objects : list) {
             ProductDTO productDTO = new ProductDTO();
             lngId = DataUtil.safeToLong(objects[0]);
             proName = String.valueOf(objects[1]);
@@ -86,10 +93,10 @@ public class ProductServiceImpl implements ProductService {
     public ProductDTO getProductById(Long id) {
         Object[] objects = null;
         ProductDTO productDTO = new ProductDTO();
-        if(productRepo.getProductById(id) != null){
+        if (productRepo.getProductById(id) != null) {
             objects = productRepo.getProductById(id);
         }
-        if(objects != null) {
+        if (objects != null) {
             productDTO.setDescription(DataUtil.safeToString(objects[0]));
             productDTO.setPrice(DataUtil.safeToInt(objects[1]));
             productDTO.setNumLike(DataUtil.safeToLong(objects[2]));
@@ -98,7 +105,7 @@ public class ProductServiceImpl implements ProductService {
             productDTO.setUrlImage(DataUtil.safeToString(objects[5]));
             productDTO.setNoData(false);
             return productDTO;
-        }else
+        } else
             productDTO.setNoData(true);
         return productDTO;
     }
@@ -109,25 +116,4 @@ public class ProductServiceImpl implements ProductService {
         return lstSting;
     }
 
-    @Override
-    public List<ProductDTO> getProByNumLike() {
-        List<Object[]> lstObject = productRepo.getProOrderByNumLike();
-        ProductDTO productDTO = null;
-        List<ProductDTO> lstProductDTO = new ArrayList<>();
-        if(lstObject != null) {
-            for (Object[] object : lstObject) {
-                productDTO = new ProductDTO();
-                productDTO.setId(DataUtil.safeToLong(object[0]));
-                productDTO.setProductName(DataUtil.safeToString(object[1]));
-                productDTO.setPrice(DataUtil.safeToInt(object[2]));
-                productDTO.setNumLike(DataUtil.safeToLong(object[3]));
-                productDTO.setDiscount(DataUtil.safeToInt(object[4]));
-                productDTO.setUrlImage(DataUtil.safeToString(object[5]));
-                lstProductDTO.add(productDTO);
-            }
-        }else 
-            productDTO.setNoData(true);
-        
-        return lstProductDTO;
-    }
 }

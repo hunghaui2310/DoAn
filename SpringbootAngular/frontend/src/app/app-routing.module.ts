@@ -11,6 +11,8 @@ import {ApiService} from '../api.service';
 import {ProductDetailComponent} from './product/product-detail/product-detail.component';
 import {OrderComponent} from './cart/order/order.component';
 import {CartDetailComponent} from './cart/cart-detail/cart-detail.component';
+import {ProIndustryComponent} from './product/pro-industry/pro-industry.component';
+import {AboutComponent} from './static/about/about.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -24,6 +26,10 @@ const routes: Routes = [
       path: 'order', component: OrderComponent
     }, {
       path: 'cart', component: CartDetailComponent
+    }, {
+      path: 'pro-industry', component: ProIndustryComponent
+    }, {
+      path: 'about', component: AboutComponent
     }
     ]
   },

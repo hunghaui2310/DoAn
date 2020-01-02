@@ -9,7 +9,7 @@
           <div class="img-container">
             <div><a class="d-block mb-0 thumbnail"><img src="assets/images/product/{{eachProduct.urlImage}}" alt="Image"
                                                         class="card-img-top"></a></div>
-            <div class="thumbnail-child" *ngIf="eachProduct.discount != 'null'">-{{eachProduct.discount}}% <i class="cart fas fa-shopping-cart"></i></div>
+            <div class="thumbnail-child" *ngIf="eachProduct.discount != 'null'">-{{eachProduct.discount}}% <i class="cart fas fa-shopping-cart" (click)="addItemCart(2)"></i></div>
           </div>
           <div class="card-body">
               <h5 class="card-title"><a routerLink="/product"
@@ -20,8 +20,8 @@
 
               </div>
             <div class="button w-70 d-flex justify-content-between mt-2">
-              <button type="button" class="btn btn-primary active">Mua ngay</button>
-              <button type="button" class="btn btn-primary active" routerLink="/order">Đặt hàng</button>
+              <button type="button" class="btn btn-primary active">Xem chi tiết</button>
+              <button type="button" class="btn btn-primary active" routerLink="/order">Mua ngay</button>
             </div>
 
           </div>

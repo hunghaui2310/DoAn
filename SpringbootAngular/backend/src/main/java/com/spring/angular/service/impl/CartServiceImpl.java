@@ -27,15 +27,16 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public String updateNumCart(Long userId, Long productId) throws Exception {
-        String message = null;
+        String message;
         List<Object[]> lstObject = cartRepo.checkDuplicate(userId,productId);
         if(lstObject.size() > 0) {
+            message = Contains.DUPLICATE;
+        }else {
             BigInteger oldNumCart = cartRepo.getNumCart(userId);
             BigInteger newNumCart = oldNumCart.add(BigInteger.valueOf(1));
             cartRepo.updateNumCart(userId, newNumCart);
             message = Contains.SUCCESS;
-        }else
-            message = Contains.DUPLICATE;
+        }
         return message;
     }
 

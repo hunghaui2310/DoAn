@@ -1,6 +1,7 @@
 package com.spring.angular.repository.impl;
 
 import com.spring.angular.dto.ProductDTO;
+import com.spring.angular.helper.Contains;
 import com.spring.angular.helper.SearchRequest;
 import com.spring.angular.model.Product;
 import com.spring.angular.repository.ProductRepo;
@@ -20,11 +21,18 @@ public class ProductRepoImpl implements ProductRepo {
     EntityManager entityManager;
 
     @Override
-    public List<Object[]> getProduct() {
+    public List<Object[]> getProduct(String condition) {
         StringBuilder sqlBuilder = new StringBuilder();
         sqlBuilder.append("select p.product_id,p.product_name,p.price,p.num_like,p.discount,f.url,p.price-(p.price*p.discount/100) as real_price" +
                 " from product p, file_info f" +
                 " where f.file_type_id = 1 and p.product_id = f.product_id and p.discount is not null");
+        if(condition != null) {
+            if (condition.equals(Contains.CREATE_DATE)) {
+                sqlBuilder.append(" order by p.create_date desc");
+            }else if (condition.equals(Contains.NUM_LIKE)){
+                sqlBuilder.append(" order by p.num_like desc");
+            }
+        }
         Query query = entityManager.createNativeQuery(sqlBuilder.toString());
         return query.getResultList();
     }

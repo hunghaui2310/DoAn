@@ -8,13 +8,11 @@ import java.util.List;
 
 public interface ProductService {
 
-    List<ProductDTO> getAllProduct();
+    List<ProductDTO> getAllProduct(String condition);
 
     List<ProductDTO> searchProductByName(SearchRequest searchRequest);
 
     ProductDTO getProductById(Long id);
 
     List<String> getImageByProId(Long id);
-
-    List<ProductDTO> getProByNumLike();
 }

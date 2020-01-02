@@ -11,27 +11,28 @@
     <div class="left-under">
       <h4>Tìm kiếm nâng cao</h4>
       <div class="row">
-        <div class="col-md-4" style="text-align: center">Giá</div>
-        <div class="col-md-8" id="radio-group-price">
-          <form (change)="price = $event">
-            <input type="radio" name="price" [value]="1">Dưới 10 triệu<br>
-            <input type="radio" name="price" [value]="2">Từ 10 - 15 triệu<br>
-            <input type="radio" name="price" [value]="3">Từ 15 - 20 triệu<br>
-            <input type="radio" name="price" [value]="4">Trên 20 triệu<br>
-          </form>
+        <div class="col-4" style="text-align: center">Giá</div>
+        <div class="col-8" id="radio-group-price">
+          <ul class="list-group">
+            <li *ngFor="let item of priceList">
+              <input type="radio" [(ngModel)]="radioSelected" name="list_name" value="{{item.value}}" (change)="onItemChange()" />
+              {{item.name}}
+            </li>
+          </ul>
         </div>
       </div>
-      <br>
       <div class="row">
-        <div class="col-md-4">Thể loại</div>
-        <div class="col-md-8">
+        <div class="col-4" style="font-size: 15px">Thể loại</div>
+        <div class="col-8">
           <select class="custom-select" [(ngModel)]="mnbrCateId" [disabled]="mblnChec">
             <option [ngValue]="null">Chọn thể loại</option>
             <option *ngFor="let eachCategory of categories" value="{{eachCategory.id}}">{{eachCategory.nameCate}}</option>
           </select>
         </div>
       </div>
-      <button type="button" class="btn btn-primary btn-sm" style="margin-top: 15px; margin-left: 40px" (click)="search()">Tìm kiếm</button>
+      <div class="row">
+        <button type="button" class="btn btn-primary col-8" style="margin-top: 15px; margin-left: 40px" (click)="search()">Tìm kiếm</button>
+      </div>
     </div>
   </div>
   <div class="content-right">

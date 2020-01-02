@@ -22,7 +22,8 @@ public class ProductController {
     @GetMapping("/getProduct")
     public ApiResponse getAllProduct(){
         try {
-            return ApiResponse.build(HttpServletResponse.SC_OK, true, "", productService.getAllProduct());
+            String condition = null;
+            return ApiResponse.build(HttpServletResponse.SC_OK, true, "", productService.getAllProduct(condition));
         }catch (Exception e){
             e.printStackTrace();
             return ApiResponse.build(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, false, "ERROR!", null);
@@ -65,14 +66,26 @@ public class ProductController {
         }
     }
 
+
     @GetMapping("/bestSale")
     public ApiResponse getProByNumLike(){
         try {
-            List<ProductDTO> lstData = productService.getProByNumLike();
+            List<ProductDTO> lstData = productService.getAllProduct(Contains.NUM_LIKE);
             return ApiResponse.build(HttpServletResponse.SC_OK, true, "", lstData);
         }catch (Exception e){
             e.printStackTrace();
             return ApiResponse.build(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, false, Contains.ERROR, null);
+        }
+    }
+
+    @GetMapping("/productNew")
+    public ApiResponse getNewPro() {
+        try {
+            List<ProductDTO> list = productService.getAllProduct(Contains.CREATE_DATE);
+            return ApiResponse.build(HttpServletResponse.SC_OK, true, "", list);
+        }catch (Exception e){
+            e.printStackTrace();
+            return ApiResponse.build(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, false, e.getMessage(), null);
         }
     }
 }

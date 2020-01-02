@@ -18,6 +18,8 @@ import { RegisterComponent } from './account/register/register.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { OrderComponent } from './cart/order/order.component';
 import {CartDetailComponent} from './cart/cart-detail/cart-detail.component';
+import { AboutComponent } from './static/about/about.component';
+import { ProIndustryComponent } from './product/pro-industry/pro-industry.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import {CartDetailComponent} from './cart/cart-detail/cart-detail.component';
     RegisterComponent,
     ProductDetailComponent,
     CartDetailComponent,
-    OrderComponent
+    OrderComponent,
+    AboutComponent,
+    ProIndustryComponent
   ],
   imports: [
     BrowserModule,

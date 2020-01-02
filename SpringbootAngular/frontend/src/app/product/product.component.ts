@@ -7,6 +7,7 @@ import {HttpClient} from '@angular/common/http';
 import {config} from '../../app-routing/application.config';
 import {ProductService} from '../service/product.service';
 import {SearchRequest} from '../../model/search.request';
+import {CartService} from '../service/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -18,7 +19,8 @@ export class ProductComponent implements OnInit, AfterViewInit {
 
   constructor(
     private http: HttpClient,
-    private productService: ProductService
+    private productService: ProductService,
+    private cartService: CartService
   ) { }
   currentP = 1;
   pageSize: 12;
@@ -45,7 +47,10 @@ export class ProductComponent implements OnInit, AfterViewInit {
     console.log('productId = ', id);
   }
 
-
+  addItemCart(userId: number) {
+    this.cartService.addToCartAPI(userId);
+    console.log('userId', userId);
+  }
 
   ngAfterViewInit(): void {
     if (!this.productList) {
