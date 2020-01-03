@@ -1,13 +1,13 @@
 import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
-import { ApiService } from '../../api.service';
+import { MatDialog} from '@angular/material';
+
 import {Product} from '../../model/Product';
-import {Observable} from 'rxjs';
-import {Category} from '../../model/Category';
 import {HttpClient} from '@angular/common/http';
-import {config} from '../../app-routing/application.config';
 import {ProductService} from '../service/product.service';
 import {SearchRequest} from '../../model/search.request';
 import {CartService} from '../service/cart.service';
+import {BuyNowComponent} from './buy-now/buy-now.component';
+import {HomeService} from '../service/home.service';
 
 @Component({
   selector: 'app-product',
@@ -20,11 +20,21 @@ export class ProductComponent implements OnInit, AfterViewInit {
   constructor(
     private http: HttpClient,
     private productService: ProductService,
-    private cartService: CartService
+    private cartService: CartService,
+    private homeService: HomeService,
+    public dialog: MatDialog
   ) { }
   currentP = 1;
-  pageSize: 12;
   mstrstatus = '';
+  urlImage;
+  dataTables: Product[] = [];
+  productId;
+  productName;
+  productPrice;
+  productDiscount;
+  productDescription;
+  categoryName;
+  numLike;
 
   ngOnInit() {
     console.log(this.productList);
@@ -50,6 +60,42 @@ export class ProductComponent implements OnInit, AfterViewInit {
   addItemCart(userId: number) {
     this.cartService.addToCartAPI(userId);
     console.log('userId', userId);
+  }
+
+  showData(row: any) {
+    this.productName = row['productName'];
+    this.urlImage = row['urlImage'];
+    this.productPrice = row['price'];
+    this.productDiscount = row['realPrice'];
+    this.productDescription = row['description'];
+    this.categoryName = row['categoryName'];
+    this.numLike = row['numLike'];
+
+    const vdialog = this.dialog.open(BuyNowComponent, {
+      data: {
+        proName: this.productName,
+        url: this.urlImage,
+        proPrice: this.productPrice,
+        proDiscount: this.productDiscount,
+        proDes: this.productDescription,
+        cateName: this.categoryName,
+        numL: this.numLike
+      }
+    });
+    vdialog.afterClosed().subscribe(
+      result => {this.loadData();
+      });
+  }
+
+  loadData() {
+    const searchModel: SearchRequest = new SearchRequest(this.productId);
+    console.log('search', searchModel);
+    this.homeService.search(searchModel).subscribe(
+      data => {
+        console.log('data search: ', data['data']);
+        this.dataTables = data['data'];
+      }
+    );
   }
 
   ngAfterViewInit(): void {

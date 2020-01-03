@@ -13,6 +13,8 @@ import {OrderComponent} from './cart/order/order.component';
 import {CartDetailComponent} from './cart/cart-detail/cart-detail.component';
 import {ProIndustryComponent} from './product/pro-industry/pro-industry.component';
 import {AboutComponent} from './static/about/about.component';
+import {BlogComponent} from './static/blog/blog.component';
+import {Blog1Component} from './static/blog/blog1/blog1.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -30,6 +32,10 @@ const routes: Routes = [
       path: 'pro-industry', component: ProIndustryComponent
     }, {
       path: 'about', component: AboutComponent
+    }, {
+      path: 'blog', component: BlogComponent
+    }, {
+      path: 'blog-detail-1', component: Blog1Component
     }
     ]
   },

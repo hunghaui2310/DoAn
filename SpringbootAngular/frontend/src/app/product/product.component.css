@@ -21,3 +21,14 @@
 .cart:hover{
   color: blue;
 }
+
+.myBtn{
+  width: 130px;
+  background: #0062cc;
+  color: white;
+  border-radius: 25px;
+}
+
+.myBtn:hover{
+  background-color: orange;
+}
